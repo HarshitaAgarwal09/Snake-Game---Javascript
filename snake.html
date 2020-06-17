@@ -3,7 +3,8 @@
 <html>
 <head>
 	<title>Snake Game</title>
-	<style>	
+	<style>
+
 		*{
 			margin: 0;
 			padding: 0;
@@ -13,31 +14,50 @@
 		
 		#mycanvas
 		{
-			display: block;
+			display: none;
 			margin: auto;
 			margin-top: 20px;
 			border: 2px solid #0ab9c2;
 		}
 		
-
 		#score-board
 		{
-			font-size: 60px;
+			display: none;
+		}
+
+
+		#score
+		{
+			font-size: 40px;
 			color :red;
 		}
 
-		#start-game
+		#start-game-btn
 		{
-			background:red;
+			background:blue;
+			color:white;
+			display: block;
+			cursor: pointer;
+			width:520px;
+			margin: auto;
+			font-size: 40px;
+			margin-top: 20px; 
+			border: 0
 		}
 
 	</style>
 </head>
 <body>
-	<canvas id = "mycanvas" width = "520" height="520"></canvas>
-	<!--<marquee> My name is Harshita Agarwal. I made a snake Game </marquee>-->
-	<p>Scores:</p>
-	<p id = "score-board"> </p>
+
+	<button id="start-game-btn" onclick="init()">Start Game</button>
+
+	<div class = "game">
+		<canvas id = "mycanvas" width = "520" height="520"></canvas>
+
+		<p id = "score-board">Scores: <p id = "score"> </p></p>
+		
+	</div>
+	
 
 	<script type="text/javascript" src="snake.js">	
 	</script>

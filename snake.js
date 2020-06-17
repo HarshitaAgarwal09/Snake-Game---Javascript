@@ -1,16 +1,17 @@
+
+var gameButton = document.getElementById("start-game-btn");
+var scoresBoard = document.getElementById("score-board");
+var score = document.getElementById("score");
+var canvas = document.getElementById("mycanvas");
+var	ctx = canvas.getContext("2d");
+
 var width = 520;
 var height = 520;
-
-var canvas ;
-var ctx ;
 
 var N = 20;
 var cellsize = width/N;
 
 let snakebody = []; 
-snakebody.push([1+N/2 , N/2]);
-snakebody.push([N/2 , N/2]);
-snakebody.push([-1+N/2 , N/2]);
 
 var state = 0;
 
@@ -19,15 +20,34 @@ var foodY = 0;
 var foodImage ;
 
 var scores = 0;
-var scoreBoard;
-
 var gameInterval;
+
+function setResetInterval(bool)
+{
+	if(bool)
+	{
+		gameInterval = setInterval(update , 300);
+	}
+	else
+	{
+		clearInterval(gameInterval);
+	}
+}
 
 function init()
 {
-	scoreBoard = document.getElementById("score-board");
-	canvas = document.getElementById("mycanvas");
-	ctx = canvas.getContext("2d");
+	gameButton.style.display="none";
+	canvas.style.display = "block";
+
+	scoresBoard.style.display = "block";
+	score.style.display = "block";
+	
+	snakebody = [];
+	snakebody.push([1+N/2 , N/2]);
+	snakebody.push([N/2 , N/2]);
+	snakebody.push([-1+N/2 , N/2]);
+
+	state = 0;
 
 	loadImage();
 	setBackground();
@@ -35,14 +55,12 @@ function init()
 	updateScore();
 	
 	document.onkeydown = handleKey;
-	gameInterval = setInterval(update , 300);
+	setResetInterval(true);
+
 }
 
 function loadImage()
 {
-
-	// var eyeImage = new Image();
-	// eyeImage.src = "";
 	 foodImage = new Image()
 	 foodImage.src = "https://pluspng.com/img-png/apple-png-apple-png-2040.png";
 }
@@ -190,7 +208,7 @@ function drawFood()
 function updateScore()
 {
 
-	scoreBoard.innerHTML = scores;
+	score.innerHTML = scores;
 }
 
 function update()
@@ -215,8 +233,8 @@ function update()
 
 function endGame()
 {
-	clearInterval(gameInterval);
-	//alert("Game Over! \n Your score is" + scores);
+	setResetInterval(false);
+	gameButton.style.display="block";
+	gameButton.innerHTML = "Start New Game";
 }
 
-init();
