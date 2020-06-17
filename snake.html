@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Snake Game</title>
+	<style>	
+		*{
+			margin: 0;
+			padding: 0;
+			text-align: center;
+			background-image: linear-gradient(-90deg, #ffbfda, #db568e);
+		}
+		
+		#mycanvas
+		{
+			display: block;
+			margin: auto;
+			margin-top: 20px;
+			border: 2px solid #0ab9c2;
+		}
+		
+
+		#score-board
+		{
+			font-size: 60px;
+			color :red;
+		}
+
+		#start-game
+		{
+			background:red;
+		}
+
+	</style>
+</head>
+<body>
+	<canvas id = "mycanvas" width = "520" height="520"></canvas>
+	<!--<marquee> My name is Harshita Agarwal. I made a snake Game </marquee>-->
+	<p>Scores:</p>
+	<p id = "score-board"> </p>
+
+	<script type="text/javascript" src="snake.js">	
+	</script>
+</body>
+</html>
